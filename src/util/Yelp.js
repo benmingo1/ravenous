@@ -1,6 +1,14 @@
 const apiKey = 'HEdbORV56upY5HqgX8kkCf9VtpMsp3ACoYFzorpYMCiChRlBwt4AnV1CSsBviAfHBvN9uGl7WamXtG_Sp3utmVL0rYi3YpMDQWJp2akn7X6MkvUkXgO7rA8KD7k2WnYx';
+let accessToken = '';
 
 const Yelp = {
+  getAccessToken() {
+    if (accessToken) {
+      return new Promise(resolve => {
+        resolve(accessToken)
+      });
+    }
+  }
   search(term, location, sortBy) {
     return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, {
       headers: {
